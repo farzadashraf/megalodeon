@@ -1,0 +1,30 @@
+{
+  "name": "megalodeon",
+  "version": "1.0.0",
+  "description": "پلتفرم تحلیل تکنیکال و ترید کریپتو با هوش مصنوعی",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "crypto",
+    "trading",
+    "technical-analysis",
+    "binance",
+    "bitcoin",
+    "ethereum",
+    "ai",
+    "persian"
+  ],
+  "author": "Farzad Ashraf",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/farzadashraf/megalodeon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/farzadashraf/megalodeon/issues"
+  },
+  "homepage": "https://github.com/farzadashraf/megalodeon#readme"
+}
