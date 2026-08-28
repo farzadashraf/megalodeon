@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مگالودون | تولید کننده لطیفه</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0806;
+    --bg2:#120d09;
+    --panel:#17110b;
+    --panel2:#1c150e;
+    --border:#2c2115;
+    --border2:#3a2c1a;
+    --gold:#e3a84c;
+    --gold2:#f6c877;
+    --gold-dim:#8a6a34;
+    --text:#f3e9db;
+    --muted:#a4917a;
+    --muted2:#6e5d47;
+    --green:#20d193;
+    --green-dim:#123527;
+    --red:#f6465d;
+    --red-dim:#3a1620;
+    --radius:10px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    background:radial-gradient(ellipse at top left, #1a1108 0%, var(--bg) 55%);
+    color:var(--text);
+    font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;
+    font-size:14px;
+    line-height:1.6;
+    display:flex;
+    flex-direction:column;
+  }
+  ::-webkit-scrollbar{width:8px; height:8px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--border2); border-radius:8px;}
+
+  /* Header */
+  header{
+    background:linear-gradient(180deg,var(--panel),#100b07);
+    border-bottom:1px solid var(--border);
+    padding:16px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .logo{display:flex; align-items:center; gap:12px;}
+  .logo .mark{
+    width:40px; height:40px; border-radius:10px;
+    background:linear-gradient(145deg,var(--gold2),var(--gold-dim));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; color:#1a1108; font-size:20px;
+    box-shadow:0 0 0 1px #00000055, 0 4px 14px -4px #e3a84c66;
+  }
+  .logo .name{font-weight:800; font-size:22px; letter-spacing:.2px;}
+  .logo .sub{font-size:11px; color:var(--muted2);}
+
+  nav{display:flex; gap:24px;}
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-weight:500;
+    font-size:14px;
+    transition:.15s;
+    padding:8px 12px;
+    border-radius:6px;
+  }
+  nav a:hover{color:var(--gold2); background:#ffffff08;}
+  nav a.active{color:var(--gold2); background:linear-gradient(90deg,#e3a84c22,#e3a84c08);}
+
+  .nav-right{display:flex; gap:12px; align-items:center;}
+  .btn{
+    padding:10px 20px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:13px;
+    border:none;
+    cursor:pointer;
+    transition:.15s;
+  }
+  .btn-primary{background:linear-gradient(90deg,var(--gold2),var(--gold)); color:#1a1108;}
+  .btn-primary:hover{filter:brightness(1.08);}
+  .btn-secondary{background:transparent; border:1px solid var(--border2); color:var(--muted);}
+  .btn-secondary:hover{border-color:var(--gold); color:var(--gold2);}
+
+  /* Main Container */
+  .container{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    max-width:1200px;
+    margin:0 auto;
+    width:100%;
+  }
+
+  /* Joke Card */
+  .joke-section{
+    width:100%;
+    max-width:600px;
+  }
+
+  .joke-header{
+    text-align:center;
+    margin-bottom:48px;
+  }
+
+  .joke-header h1{
+    font-size:48px;
+    font-weight:800;
+    margin-bottom:16px;
+    background:linear-gradient(90deg,var(--gold2),var(--gold-dim));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+
+  .joke-header p{
+    font-size:16px;
+    color:var(--muted);
+  }
+
+  .joke-card{
+    background:linear-gradient(135deg, var(--panel2), var(--panel));
+    border:2px solid var(--border);
+    border-radius:16px;
+    padding:40px;
+    min-height:200px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:24px;
+    box-shadow:0 0 30px #e3a84c22;
+    transition:.3s;
+  }
+
+  .joke-card:hover{
+    border-color:var(--gold);
+    box-shadow:0 0 50px #e3a84c44;
+    transform:translateY(-4px);
+  }
+
+  .joke-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .joke-category{
+    display:inline-block;
+    padding:6px 14px;
+    background:linear-gradient(90deg,var(--gold2),var(--gold-dim));
+    color:#1a1108;
+    border-radius:6px;
+    font-weight:700;
+    font-size:11px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    width:fit-content;
+  }
+
+  .joke-type{
+    display:inline-block;
+    padding:4px 10px;
+    background:var(--border2);
+    color:var(--muted);
+    border-radius:4px;
+    font-weight:600;
+    font-size:10px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+    width:fit-content;
+  }
+
+  .joke-text{
+    font-size:18px;
+    line-height:1.8;
+    color:var(--text);
+    font-weight:500;
+    margin-bottom:12px;
+  }
+
+  .joke-punchline{
+    font-size:16px;
+    color:var(--gold2);
+    font-weight:700;
+    line-height:1.6;
+    padding-top:12px;
+    border-top:1px solid var(--border);
+  }
+
+  .joke-source{
+    font-size:11px;
+    color:var(--muted2);
+    font-style:italic;
+  }
+
+  .joke-controls{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  .joke-btn{
+    flex:1;
+    min-width:140px;
+    padding:14px 20px;
+    border-radius:8px;
+    font-weight:700;
+    font-size:13px;
+    border:none;
+    cursor:pointer;
+    transition:.15s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+
+  .joke-btn-primary{
+    background:linear-gradient(90deg,var(--gold2),var(--gold));
+    color:#1a1108;
+  }
+
+  .joke-btn-primary:hover{
+    filter:brightness(1.08);
+  }
+
+  .joke-btn-primary:disabled{
+    filter:brightness(0.7);
+    cursor:not-allowed;
+  }
+
+  .joke-btn-secondary{
+    background:transparent;
+    border:1.5px solid var(--border2);
+    color:var(--muted);
+  }
+
+  .joke-btn-secondary:hover{
+    border-color:var(--gold);
+    color:var(--gold2);
+  }
+
+  .spinner{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    border:2px solid #ffffff44;
+    border-top-color:var(--gold2);
+    border-radius:50%;
+    animation:spin 0.8s linear infinite;
+  }
+
+  @keyframes spin{
+    to{transform:rotate(360deg);}
+  }
+
+  .filters{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(120px, 1fr));
+    gap:8px;
+    margin-top:24px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+  }
+
+  .filter-btn{
+    padding:10px 12px;
+    border:1px solid var(--border2);
+    background:transparent;
+    color:var(--muted);
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:12px;
+    text-transform:uppercase;
+    transition:.15s;
+  }
+
+  .filter-btn:hover{
+    border-color:var(--gold);
+    color:var(--gold2);
+  }
+
+  .filter-btn.active{
+    background:linear-gradient(90deg,var(--gold2),var(--gold-dim));
+    color:#1a1108;
+    border-color:var(--gold);
+  }
+
+  .stats{
+    display:flex;
+    gap:24px;
+    justify-content:center;
+    margin-top:32px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+    flex-wrap:wrap;
+  }
+
+  .stat-item{
+    text-align:center;
+  }
+
+  .stat-value{
+    font-size:24px;
+    font-weight:800;
+    color:var(--gold2);
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  .stat-label{
+    font-size:11px;
+    color:var(--muted2);
+    text-transform:uppercase;
+    margin-top:4px;
+    font-weight:600;
+  }
+
+  .loading{
+    text-align:center;
+    color:var(--muted);
+    padding:20px;
+  }
+
+  .error{
+    background:var(--red-dim);
+    border:1px solid var(--red);
+    color:var(--red);
+    padding:14px;
+    border-radius:8px;
+    text-align:center;
+    margin-bottom:20px;
+  }
+
+  @media (max-width:768px){
+    header{padding:12px 20px;}
+    .joke-header h1{font-size:32px;}
+    .joke-card{padding:24px;}
+    .joke-text{font-size:16px;}
+    .joke-controls{flex-direction:column;}
+    .joke-btn{min-width:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="mark">😂</div>
+    <div>
+      <div class="name">مگالودون</div>
+      <div class="sub">تولید کننده لطیفه</div>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">خانه</a>
+    <a href="chart.html">چارت</a>
+    <a href="joke.html" class="active">لطیفه</a>
+  </nav>
+  <div class="nav-right">
+    <button class="btn btn-secondary">ورود</button>
+    <button class="btn btn-primary">ثبت‌نام</button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="joke-section">
+    <div class="joke-header">
+      <h1>😂 لطیفه تازه</h1>
+      <p>هر روز لطیفه جدید برای شما!</p>
+    </div>
+
+    <div id="errorContainer"></div>
+
+    <div class="joke-card" id="jokeCard">
+      <div class="loading">
+        <div class="spinner" style="margin:0 auto 12px;"></div>
+        <div>در حال بارگذاری لطیفه...</div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-type="all">همه</button>
+      <button class="filter-btn" data-type="general">عمومی</button>
+      <button class="filter-btn" data-type="programming">برنامه‌نویسی</button>
+      <button class="filter-btn" data-type="knock-knock">تق‌تق</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-value" id="totalJokes">0</div>
+        <div class="stat-label">لطیفه دیده‌شده</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="likedJokes">0</div>
+        <div class="stat-label">علاقه‌مند</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="currentCategory">همه</div>
+        <div class="stat-label">دسته‌بندی</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==================== State ====================
+let state = {
+  currentJoke: null,
+  totalJokes: 0,
+  likedJokes: 0,
+  currentCategory: 'all',
+  loading: false,
+  history: []
+};
+
+// ==================== DOM Elements ====================
+const jokeCard = document.getElementById('jokeCard');
+const errorContainer = document.getElementById('errorContainer');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+// ==================== API Calls ====================
+async function fetchJoke(category = 'any') {
+  state.loading = true;
+  errorContainer.innerHTML = '';
+  jokeCard.innerHTML = '<div class="loading"><div class="spinner" style="margin:0 auto 12px;"></div><div>در حال بارگذاری...</div></div>';
+
+  try {
+    // استفاده از JokeAPI
+    let url = 'https://v2.jokeapi.dev/joke/';
+    
+    if (category === 'all') {
+      url += 'Any';
+    } else if (category === 'general') {
+      url += 'General';
+    } else if (category === 'programming') {
+      url += 'Programming';
+    } else if (category === 'knock-knock') {
+      url += 'Knock-Knock';
+    } else {
+      url += 'Any';
+    }
+
+    const response = await fetch(url + '?lang=fa');
+    if (!response.ok) throw new Error('خطا در دریافت لطیفه');
+    
+    const data = await response.json();
+    
+    if (data.error) {
+      throw new Error('لطیفه‌ای یافت نشد!');
+    }
+
+    state.currentJoke = data;
+    state.totalJokes++;
+    state.history.push(data);
+    
+    renderJoke();
+    updateStats();
+  } catch (err) {
+    showError(err.message || 'خطای نامشخص');
+    console.error('Joke API Error:', err);
+  } finally {
+    state.loading = false;
+  }
+}
+
+function renderJoke() {
+  if (!state.currentJoke) {
+    jokeCard.innerHTML = '<div class="loading">لطیفه‌ای موجود نیست</div>';
+    return;
+  }
+
+  const joke = state.currentJoke;
+  const categoryMap = {
+    'General': 'عمومی',
+    'Programming': 'برنامه‌نویسی',
+    'Knock-Knock': 'تق‌تق',
+    'Miscellaneous': 'متفرقه',
+    'Dark': 'سیاه‌رنگ'
+  };
+
+  const categoryLabel = categoryMap[joke.category] || joke.category;
+  const typeLabel = joke.type === 'single' ? 'تک‌خطی' : 'دو‌خطی';
+
+  let content = `
+    <div class="joke-content">
+      <span class="joke-category">${categoryLabel}</span>
+      <span class="joke-type">${typeLabel}</span>
+  `;
+
+  if (joke.type === 'single') {
+    content += `<div class="joke-text">${joke.joke}</div>`;
+  } else {
+    content += `
+      <div class="joke-text">${joke.setup}</div>
+      <div class="joke-punchline">${joke.delivery}</div>
+    `;
+  }
+
+  content += `
+      <div class="joke-source">API: JokeAPI</div>
+    </div>
+    <div class="joke-controls">
+      <button class="joke-btn joke-btn-primary" onclick="nextJoke()">
+        <span>⚡</span> لطیفه بعدی
+      </button>
+      <button class="joke-btn joke-btn-secondary" onclick="likeJoke()">
+        <span>❤️</span> علاقه‌مند
+      </button>
+      <button class="joke-btn joke-btn-secondary" onclick="shareJoke()">
+        <span>📤</span> اشتراک
+      </button>
+      <button class="joke-btn joke-btn-secondary" onclick="copyJoke()">
+        <span>📋</span> کپی
+      </button>
+    </div>
+  `;
+
+  jokeCard.innerHTML = content;
+}
+
+function nextJoke() {
+  if (!state.loading) {
+    fetchJoke(state.currentCategory);
+  }
+}
+
+function likeJoke() {
+  if (!state.currentJoke) return;
+  state.likedJokes++;
+  updateStats();
+  showToast('❤️ به علاقه‌مندی‌های شما اضافه شد!');
+}
+
+function shareJoke() {
+  if (!state.currentJoke) return;
+  
+  let text = '';
+  if (state.currentJoke.type === 'single') {
+    text = state.currentJoke.joke;
+  } else {
+    text = state.currentJoke.setup + '\n' + state.currentJoke.delivery;
+  }
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'مگالودون - لطیفه',
+      text: text
+    }).catch(err => console.log('Share error:', err));
+  } else {
+    copyJoke();
+  }
+}
+
+function copyJoke() {
+  if (!state.currentJoke) return;
+  
+  let text = '';
+  if (state.currentJoke.type === 'single') {
+    text = state.currentJoke.joke;
+  } else {
+    text = state.currentJoke.setup + '\n' + state.currentJoke.delivery;
+  }
+
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('📋 لطیفه کپی شد!');
+  });
+}
+
+function updateStats() {
+  document.getElementById('totalJokes').textContent = state.totalJokes;
+  document.getElementById('likedJokes').textContent = state.likedJokes;
+  document.getElementById('currentCategory').textContent = 
+    state.currentCategory === 'all' ? 'همه' : 
+    state.currentCategory === 'general' ? 'عمومی' :
+    state.currentCategory === 'programming' ? 'برنامه‌نویسی' :
+    state.currentCategory === 'knock-knock' ? 'تق‌تق' :
+    state.currentCategory;
+}
+
+function showError(msg) {
+  errorContainer.innerHTML = `<div class="error">⚠️ ${msg}</div>`;
+  jokeCard.innerHTML = `
+    <div class="joke-content">
+      <div class="joke-text" style="color:var(--muted);">خطا در بارگذاری لطیفه</div>
+    </div>
+    <div class="joke-controls">
+      <button class="joke-btn joke-btn-primary" onclick="nextJoke()">
+        <span>🔄</span> دوباره سعی کنید
+      </button>
+    </div>
+  `;
+}
+
+function showToast(msg) {
+  const toast = document.createElement('div');
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: #1a1108;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+  `;
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.animation = 'slideDown 0.3s ease';
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
+}
+
+// ==================== Event Listeners ====================
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    state.currentCategory = e.target.dataset.type;
+    state.totalJokes = 0;
+    state.likedJokes = 0;
+    updateStats();
+    fetchJoke(state.currentCategory);
+  });
+});
+
+// ==================== Init ====================
+window.addEventListener('load', () => {
+  fetchJoke('any');
+});
+
+// Add animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideUp {
+    from {
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideDown {
+    from {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+console.log('✓ Joke Generator آماده است!');
+</script>
+
+</body>
+</html>
